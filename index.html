@@ -68,7 +68,7 @@ let googleToken=null, googleTokenClient=null;
 const cloudMsg=(message)=>{$('googleState').textContent=message};
 const cloudButtons=(connected)=>{for(const id of ['googleUpload','googleDownload','googleDisconnect'])$(id).disabled=!connected};
 const clientKey='ricettario_google_client_id';
-$('googleClientId').value=localStorage.getItem(clientKey)||'';
+$('googleClientId').value=localStorage.getItem(clientKey)||'85416369809-2d5jhacfm81a02r8f7h15clqj5fdoi2a.apps.googleusercontent.com';
 function googleOriginOk(){return location.protocol==='https:'||['localhost','127.0.0.1'].includes(location.hostname)}
 function loadGoogleScript(){return new Promise((resolve,reject)=>{if(window.google?.accounts?.oauth2)return resolve();const sc=document.createElement('script');sc.src='https://accounts.google.com/gsi/client';sc.async=true;sc.onload=resolve;sc.onerror=()=>reject(Error('Impossibile caricare Google Identity Services.'));document.head.appendChild(sc)})}
 function gFetch(url,options={}){return fetch(url,{...options,headers:{Authorization:'Bearer '+googleToken,...(options.headers||{})}}).then(async r=>{if(!r.ok){const message=await r.text();throw Error('Google Drive HTTP '+r.status+': '+message.slice(0,220))}return r.status===204?null:r.json()})}
