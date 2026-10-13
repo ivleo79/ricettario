@@ -5,8 +5,8 @@
 .category-tabs{display:flex;gap:7px;overflow-x:auto;padding:5px 0 12px;scrollbar-width:thin}.category-tabs button{white-space:nowrap;background:#edece3;color:#315044;padding:10px 12px;border-radius:11px 11px 4px 4px}.category-tabs button.active{background:#176b56;color:#fff}.filter-box{background:#f5f8f4;border-radius:12px;padding:10px;margin-top:12px}.tag-options{display:flex;flex-wrap:wrap;gap:7px}.tag-options label{display:flex;align-items:center;gap:5px;margin:0;font-size:12px;font-weight:500;padding:7px 9px;background:white;border:1px solid #d9e2d9;border-radius:16px;cursor:pointer}.tag-options input{width:auto;margin:0}.smallhint{font-size:12px;color:#64736f}.tag-pill{background:#e6eff8;color:#284e70}.category-count{font-size:11px;opacity:.85}.filter-actions{display:flex;justify-content:space-between;align-items:center;margin:9px 0}.filter-actions button{padding:6px 8px;font-size:12px}.category-tabs{margin-bottom:5px}@media print{.category-tabs,.filter-box{display:none!important}}
 </style><style>
 .history-item{border:1px solid #d8dfda;border-radius:10px;margin:9px 0;background:#f9faf8;overflow:hidden}.history-item summary{cursor:pointer;padding:12px;line-height:1.5}.history-item[open] summary{background:#e8f2eb}.history-inside{padding:10px 12px}.history-change{margin:10px 0;border-top:1px solid #d8dfda;padding-top:10px}.history-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:7px}.history-cols>div{background:white;border:1px solid #e3e7e3;border-radius:7px;padding:9px;min-width:0}.history-cols small{display:block;font-weight:700;color:#56675c;margin-bottom:4px}.history-cols div div{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}@media(max-width:650px){.history-cols{grid-template-columns:1fr}}
-</style></head><body><header><div><h1>🍌 Le nostre ricette</h1><small>Prototipo 0.9 · sincronizzazione protetta</small></div><span id="status">Salvataggio locale</span></header><main><div class="tools"><button id="newBtn">+ Nuova ricetta</button><button class="secondary" id="exportBtn">⬇️ Scarica backup completo</button><button class="secondary" id="driveHelpBtn">☁️ Google Drive (beta)</button><button class="secondary" id="restoreBtn">↩️ Ripristina backup completo</button><input type="file" id="restoreFile" accept="application/json,.json" hidden><button id="quickImportBtn">📋 Incolla ricetta da ChatGPT</button><button class="secondary" id="importBtn">Importa file / backup JSON</button><input type="file" id="importFile" accept="application/json,.json" hidden><button class="secondary" onclick="window.print()">Stampa / PDF</button></div><div id="cloudPanel" class="panel hidden" style="margin-bottom:18px;border:2px solid #a7ccb8"><h2>☁️ Google Drive — collegamento sperimentale</h2><p>Il ricettario continuerà a salvare localmente. Il cloud utilizza una <b>cartella privata dell'app</b> sul tuo Google Drive: non serve l'accesso ai tuoi file personali. Non è ancora sincronizzazione automatica.</p><p class="smallhint"><b>Per attivarlo:</b> pubblica l'app su un indirizzo HTTPS e crea le credenziali OAuth Web in Google Cloud Console, autorizzando esattamente l'origine del sito. Incolla qui il Client ID pubblico (mai una password o un client secret).</p><label>Google OAuth Client ID (Web)<input id="googleClientId" placeholder="1234567890-...apps.googleusercontent.com" spellcheck="false" autocomplete="off"></label><div class="actions"><button id="googleConnect">Collega account Google</button><button id="googleUpload" class="secondary" disabled>↑ Salva copia su Drive</button><button id="googleDownload" class="secondary" disabled>↓ Recupera da Drive</button><button id="googleDisconnect" class="secondary" disabled>Disconnetti</button><button id="googleClose" class="secondary">Chiudi</button></div><label style="display:flex;align-items:center;gap:9px;margin-top:12px"><input type="checkbox" id="autoSync" style="width:auto"> Sincronizzazione assistita (beta): salva automaticamente le modifiche locali</label><p class="smallhint">Attivabile dopo aver recuperato una copia da Drive. Se l’archivio remoto cambia, il caricamento si blocca per proteggere le ricette. Al ritorno nell’app segnaleremo eventuali aggiornamenti su altri dispositivi, senza sostituire i dati locali automaticamente. Richiede una connessione Google attiva.</p><p id="googleState" class="smallhint" role="status">Non connesso. Per ora usa il backup manuale.</p><p class="smallhint">Prima del primo trasferimento esporta un backup. Se esiste già una copia più recente su Drive, l'app interrompe il caricamento e ti chiede di recuperarla prima. <b>Non effettuare modifiche contemporaneamente su due dispositivi.</b></p></div><div id="drivePanel" class="panel hidden" style="margin-bottom:18px;border:2px solid #a7ccb8"><h2>☁️ Backup su Google Drive</h2><p>Per adesso il ricettario non è collegato al tuo account Google. Questa procedura salva una copia online, <b>ma non sincronizza automaticamente</b> PC e telefono.</p><ol><li>Premi <b>Scarica backup completo</b> per creare il file JSON con ricette, fotografie e cronologia.</li><li>Premi <b>Apri Google Drive</b> e carica il file nella cartella “Le nostre ricette” (Nuovo → Caricamento file).</li><li>Quando dovrai recuperarlo su un dispositivo, scaricalo da Drive e usa <b>Ripristina backup completo</b>.</li></ol><p class="smallhint">Usa sempre il file più recente. Prima di ripristinare ricette da un altro dispositivo esporta una copia locale. La futura sincronizzazione richiederà un sito HTTPS e l’autorizzazione Google.</p><div class="actions"><button id="driveExportBtn">Scarica backup completo</button><button id="openDriveBtn" class="secondary">Apri Google Drive ↗</button><button id="closeDriveBtn" class="secondary">Chiudi</button></div></div><div class="notice">Questa versione conserva una copia locale anche offline; la sincronizzazione assistita con Drive richiede accesso a Google e connessione. Per avere le stesse ricette su PC e telefono usa temporaneamente Esporta/Importa. Puoi anche <b>incollare il JSON fornito da ChatGPT</b>, senza scaricare un file. L’importazione può AGGIUNGERE o AGGIORNARE una ricetta esistente con conferma e cronologia; non sincronizza le modifiche fra dispositivi. Non cancellare i dati del browser senza fare un backup. Le foto grandi potrebbero saturare lo spazio locale.</div><div id="quickImportPanel" class="panel hidden" style="margin-bottom:18px;border:2px solid #a7ccb8"><h2>📋 Importa o aggiorna dalla chat</h2><p class="muted">Chiedi a ChatGPT “Preparami la ricetta per il ricettario” e copia il blocco JSON che ti fornisce. Incollalo qui e premi Aggiungi. Funziona anche con il JSON di un backup o di una singola ricetta.</p><label>Incolla il testo JSON<textarea id="quickImportText" rows="7" placeholder='{ "app": "Le nostre ricette", "recipes": [...] }' spellcheck="false"></textarea></label><div class="actions"><button id="quickImportConfirm" type="button">Controlla e importa</button><button id="quickImportCancel" class="secondary" type="button">Chiudi</button></div><p class="smallhint">Se la ricetta esiste già, mostra le differenze e ti chiede se aggiornarla. Il file non viene inviato online. Fai comunque un backup periodico.</p></div><div class="layout"><aside id="sidebar" class="panel"><h2>Il mio quaderno</h2><div id="categoryTabs" class="category-tabs"></div><input id="search" placeholder="Cerca una ricetta…" aria-label="Cerca ricetta"><div class="filter-box"><div class="filter-actions"><strong style="font-size:13px">Caratteristiche</strong><button type="button" class="secondary" id="resetFilters">Azzera filtri</button></div><div class="smallhint">Le etichette selezionate devono essere tutte presenti.</div><div id="filterTags" class="tag-options" style="margin-top:9px"></div></div><p id="resultsCount" class="muted"></p><div id="recipeList"></div></aside><section class="panel"><div id="viewer"></div><div id="editor" class="hidden"><h2 id="editHeading">Modifica ricetta</h2><form id="recipeForm"><label>Nome della ricetta<input id="rName" required maxlength="150"></label><div class="two"><label>Categoria<select id="rCategory"><option>Antipasto</option><option>Primo</option><option>Secondo</option><option>Contorno</option><option>Dessert</option><option>Dolce</option><option>Pane e lievitati</option><option>Altro</option></select></label><label>Peso finale (g)<input id="rYield" inputmode="decimal" type="number" min="0" step="any" placeholder="Es. 760"></label></div><label>Caratteristiche della ricetta</label><div class="tag-options" id="editTags"></div><p class="smallhint">Le caratteristiche come «senza glutine» vanno confermate verificando tutti gli ingredienti, le etichette e le contaminazioni.</p><label>Ingredienti (una riga per ingrediente: nome | quantità | unità)<textarea id="rIngredients" rows="8" placeholder="Banana | 239 | g"></textarea></label><div class="notice">Per calcolare valori nutrizionali precisi occorrono i dati nutrizionali dei singoli ingredienti. Per ora puoi inserirli manualmente per l'intera ricetta; i valori per 100 g e per porzione sono calcolati automaticamente.</div><div class="two"><label>Calorie totali (kcal)<input id="rKcal" type="number" min="0" step="any" placeholder="Da verificare"></label><label>Proteine totali (g)<input id="rProtein" type="number" min="0" step="any" placeholder="Da verificare"></label><label>Carboidrati totali (g)<input id="rCarbs" type="number" min="0" step="any" placeholder="Da verificare"></label><label>Grassi totali (g)<input id="rFat" type="number" min="0" step="any" placeholder="Da verificare"></label><label>Fibre totali (g)<input id="rFiber" type="number" min="0" step="any" placeholder="Da verificare"></label><label>Porzione (g)<input id="rPortion" type="number" min="0" step="any" placeholder="Es. 52"></label><label>Stato della ricetta<select id="rState"><option>In prova</option><option>Definitiva</option></select></label></div><label>Preparazione<textarea id="rMethod" rows="8" placeholder="Un passaggio per riga…"></textarea></label><label>Note, tempi e cottura<textarea id="rNotes" rows="4"></textarea></label><label>Foto della ricetta (JPG / PNG / WEBP, max 2 MB)<input id="rPhoto" type="file" accept="image/jpeg,image/png,image/webp"></label><div id="photoStatus"></div><div class="actions"><button type="submit">Salva nuova versione</button><button type="button" class="secondary" id="cancelBtn">Annulla</button><button type="button" class="secondary" id="removePhotoBtn">Rimuovi foto</button></div></form></div></section></div></main><footer>Sincronizzazione assistita beta: non modificare lo stesso archivio contemporaneamente su dispositivi diversi. Prototipo didattico. Le stime nutrizionali non sostituiscono etichette e valutazioni professionali. Nessuna connessione diretta a ChatGPT è attiva.</footer><script>
-'use strict';const KEY='ricettario_v01';const initial=[{id:'banana-bread-2',name:'Banana Bread Proteico 2.0',category:'Dolce',tags:['Proteica'],yield:760,portion:52,state:'Definitiva',ingredients:[{name:'Farina Spadoni tipo 1 proteica',amount:139,unit:'g'},{name:'Maizena',amount:33,unit:'g'},{name:'Banana',amount:239,unit:'g'},{name:'Yogurt greco ai mirtilli',amount:145,unit:'g'},{name:'Yogurt greco bianco',amount:150,unit:'g (circa)'},{name:'Albumi',amount:185,unit:'g'},{name:'Lievito per dolci',amount:16,unit:'g'},{name:'Vanillina',amount:1,unit:'bustina'}],kcal:null,protein:null,carbs:null,fat:null,fiber:null,method:'Montare gli albumi a neve morbida.\nPreparare l’impasto con gli altri ingredienti e incorporare delicatamente gli albumi.\nVersare in uno stampo da plumcake rivestito con carta forno.\nCuocere in forno a convezione, controllando la cottura al cuore.',notes:'Ricetta approvata: consistenza morbida con vera mollica e crosta dorata. Cottura sperimentata: 170 °C, poi 160 °C e prolungamento a 140 °C fino a cottura. Tempi esatti da integrare.',photo:null,versions:[{at:'2026-10-11',note:'Ricetta iniziale: dati di lavorazione già condivisi; valori nutrizionali non verificati.'}]}];
+</style></head><body><header><div><h1>🍌 Le nostre ricette</h1><small>Prototipo 1.0 beta · importazione sicura tra account</small></div><span id="status" role="status" aria-live="polite">Salvataggio locale · Google non collegato</span></header><main><div class="tools"><button id="newBtn">+ Nuova ricetta</button><button class="secondary" id="exportBtn">⬇️ Scarica backup completo</button><button class="secondary" id="driveHelpBtn">☁️ Google Drive (beta)</button><button class="secondary" id="restoreBtn">↩️ Aggiungi da backup JSON</button><input type="file" id="restoreFile" accept="application/json,.json" hidden><button id="quickImportBtn">📋 Incolla ricetta da ChatGPT</button><button class="secondary" id="importBtn">Importa file / backup JSON</button><input type="file" id="importFile" accept="application/json,.json" hidden><button class="secondary" onclick="window.print()">Stampa / PDF</button></div><div id="cloudPanel" class="panel hidden" style="margin-bottom:18px;border:2px solid #a7ccb8"><h2>☁️ Google Drive — collegamento sperimentale</h2><p>Il ricettario continuerà a salvare localmente. Il cloud utilizza una <b>cartella privata dell'app</b> sul tuo Google Drive: non serve l'accesso ai tuoi file personali. La sincronizzazione automatica richiede una connessione Google attiva.</p><p class="smallhint"><b>Per attivarlo:</b> pubblica l'app su un indirizzo HTTPS e crea le credenziali OAuth Web in Google Cloud Console, autorizzando esattamente l'origine del sito. Incolla qui il Client ID pubblico (mai una password o un client secret).</p><label>Google OAuth Client ID (Web)<input id="googleClientId" placeholder="1234567890-...apps.googleusercontent.com" spellcheck="false" autocomplete="off"></label><div class="actions"><button id="googleConnect">Collega account Google</button><button id="googleUpload" class="secondary" disabled>↑ Salva copia su Drive</button><button id="googleDownload" class="secondary" disabled>↓ Recupera da Drive</button><button id="googleDisconnect" class="secondary" disabled>Disconnetti</button><button id="googleClose" class="secondary">Chiudi</button></div><label style="display:flex;align-items:center;gap:9px;margin-top:12px"><input type="checkbox" id="autoSync" style="width:auto"> Sincronizzazione assistita (beta): salva automaticamente le modifiche locali</label><p class="smallhint">Attivabile dopo aver recuperato una copia da Drive. Il cambio account sospende il caricamento automatico. Il trasferimento volontario avviene tramite importazione JSON con conferma e senza eliminare ricette. Quando torni nell’app, aggiungeremo gli aggiornamenti dal cloud soltanto se non ci sono modifiche locali in sospeso e non stai compilando una ricetta. Richiede una connessione Google attiva.</p><p id="googleState" class="smallhint" role="status">Non connesso. Per ora usa il backup manuale.</p><p class="smallhint">Prima del primo trasferimento esporta un backup. Se esiste già una copia più recente su Drive, l'app interrompe il caricamento e ti chiede di recuperarla prima. <b>Non effettuare modifiche contemporaneamente su due dispositivi.</b></p></div><div id="drivePanel" class="panel hidden" style="margin-bottom:18px;border:2px solid #a7ccb8"><h2>☁️ Backup su Google Drive</h2><p>Per adesso il ricettario non è collegato al tuo account Google. Questa procedura salva una copia online, <b>ma non sincronizza automaticamente</b> PC e telefono.</p><ol><li>Premi <b>Scarica backup completo</b> per creare il file JSON con ricette, fotografie e cronologia.</li><li>Premi <b>Apri Google Drive</b> e carica il file nella cartella “Le nostre ricette” (Nuovo → Caricamento file).</li><li>Quando dovrai recuperarlo su un dispositivo, scaricalo da Drive e usa <b>Ripristina backup completo</b>.</li></ol><p class="smallhint">Usa sempre il file più recente. Prima di ripristinare ricette da un altro dispositivo esporta una copia locale. La futura sincronizzazione richiederà un sito HTTPS e l’autorizzazione Google.</p><div class="actions"><button id="driveExportBtn">Scarica backup completo</button><button id="openDriveBtn" class="secondary">Apri Google Drive ↗</button><button id="closeDriveBtn" class="secondary">Chiudi</button></div></div><div class="notice">Questa versione conserva una copia locale anche offline; la sincronizzazione assistita con Drive richiede accesso a Google e connessione. Per avere le stesse ricette su PC e telefono usa temporaneamente Esporta/Importa. Puoi anche <b>incollare il JSON fornito da ChatGPT</b>, senza scaricare un file. L’importazione può AGGIUNGERE o AGGIORNARE una ricetta esistente con conferma e cronologia; non sincronizza le modifiche fra dispositivi. Non cancellare i dati del browser senza fare un backup. Le foto grandi potrebbero saturare lo spazio locale.</div><div id="quickImportPanel" class="panel hidden" style="margin-bottom:18px;border:2px solid #a7ccb8"><h2>📋 Importa o aggiorna dalla chat</h2><p class="muted">Chiedi a ChatGPT “Preparami la ricetta per il ricettario” e copia il blocco JSON che ti fornisce. Incollalo qui e premi Aggiungi. Funziona anche con il JSON di un backup o di una singola ricetta.</p><label>Incolla il testo JSON<textarea id="quickImportText" rows="7" placeholder='{ "app": "Le nostre ricette", "recipes": [...] }' spellcheck="false"></textarea></label><div class="actions"><button id="quickImportConfirm" type="button">Controlla e importa</button><button id="quickImportCancel" class="secondary" type="button">Chiudi</button></div><p class="smallhint">Se la ricetta esiste già, mostra le differenze e ti chiede se aggiornarla. Il file non viene inviato online. Fai comunque un backup periodico.</p></div><div class="layout"><aside id="sidebar" class="panel"><h2>Il mio quaderno</h2><div id="categoryTabs" class="category-tabs"></div><input id="search" placeholder="Cerca una ricetta…" aria-label="Cerca ricetta"><div class="filter-box"><div class="filter-actions"><strong style="font-size:13px">Caratteristiche</strong><button type="button" class="secondary" id="resetFilters">Azzera filtri</button></div><div class="smallhint">Le etichette selezionate devono essere tutte presenti.</div><div id="filterTags" class="tag-options" style="margin-top:9px"></div></div><p id="resultsCount" class="muted"></p><div id="recipeList"></div></aside><section class="panel"><div id="viewer"></div><div id="editor" class="hidden"><h2 id="editHeading">Modifica ricetta</h2><form id="recipeForm"><label>Nome della ricetta<input id="rName" required maxlength="150"></label><div class="two"><label>Categoria<select id="rCategory"><option>Antipasto</option><option>Primo</option><option>Secondo</option><option>Contorno</option><option>Dessert</option><option>Dolce</option><option>Pane e lievitati</option><option>Altro</option></select></label><label>Peso finale (g)<input id="rYield" inputmode="decimal" type="number" min="0" step="any" placeholder="Es. 760"></label></div><label>Caratteristiche della ricetta</label><div class="tag-options" id="editTags"></div><p class="smallhint">Le caratteristiche come «senza glutine» vanno confermate verificando tutti gli ingredienti, le etichette e le contaminazioni.</p><label>Ingredienti (una riga per ingrediente: nome | quantità | unità)<textarea id="rIngredients" rows="8" placeholder="Banana | 239 | g"></textarea></label><div class="notice">Per calcolare valori nutrizionali precisi occorrono i dati nutrizionali dei singoli ingredienti. Per ora puoi inserirli manualmente per l'intera ricetta; i valori per 100 g e per porzione sono calcolati automaticamente.</div><div class="two"><label>Calorie totali (kcal)<input id="rKcal" type="number" min="0" step="any" placeholder="Da verificare"></label><label>Proteine totali (g)<input id="rProtein" type="number" min="0" step="any" placeholder="Da verificare"></label><label>Carboidrati totali (g)<input id="rCarbs" type="number" min="0" step="any" placeholder="Da verificare"></label><label>Grassi totali (g)<input id="rFat" type="number" min="0" step="any" placeholder="Da verificare"></label><label>Fibre totali (g)<input id="rFiber" type="number" min="0" step="any" placeholder="Da verificare"></label><label>Porzione (g)<input id="rPortion" type="number" min="0" step="any" placeholder="Es. 52"></label><label>Stato della ricetta<select id="rState"><option>In prova</option><option>Definitiva</option></select></label></div><label>Preparazione<textarea id="rMethod" rows="8" placeholder="Un passaggio per riga…"></textarea></label><label>Note, tempi e cottura<textarea id="rNotes" rows="4"></textarea></label><label>Foto della ricetta (JPG / PNG / WEBP, max 2 MB)<input id="rPhoto" type="file" accept="image/jpeg,image/png,image/webp"></label><div id="photoStatus"></div><div class="actions"><button type="submit">Salva nuova versione</button><button type="button" class="secondary" id="cancelBtn">Annulla</button><button type="button" class="secondary" id="removePhotoBtn">Rimuovi foto</button></div></form></div></section></div></main><footer>Sincronizzazione assistita beta: non modificare lo stesso archivio contemporaneamente su dispositivi diversi. Prototipo didattico · v1.0 beta account protetti. Le stime nutrizionali non sostituiscono etichette e valutazioni professionali. Nessuna connessione diretta a ChatGPT è attiva.</footer><script>
+'use strict';let KEY='ricettario_v01';const initial=[{id:'banana-bread-2',name:'Banana Bread Proteico 2.0',category:'Dolce',tags:['Proteica'],yield:760,portion:52,state:'Definitiva',ingredients:[{name:'Farina Spadoni tipo 1 proteica',amount:139,unit:'g'},{name:'Maizena',amount:33,unit:'g'},{name:'Banana',amount:239,unit:'g'},{name:'Yogurt greco ai mirtilli',amount:145,unit:'g'},{name:'Yogurt greco bianco',amount:150,unit:'g (circa)'},{name:'Albumi',amount:185,unit:'g'},{name:'Lievito per dolci',amount:16,unit:'g'},{name:'Vanillina',amount:1,unit:'bustina'}],kcal:null,protein:null,carbs:null,fat:null,fiber:null,method:'Montare gli albumi a neve morbida.\nPreparare l’impasto con gli altri ingredienti e incorporare delicatamente gli albumi.\nVersare in uno stampo da plumcake rivestito con carta forno.\nCuocere in forno a convezione, controllando la cottura al cuore.',notes:'Ricetta approvata: consistenza morbida con vera mollica e crosta dorata. Cottura sperimentata: 170 °C, poi 160 °C e prolungamento a 140 °C fino a cottura. Tempi esatti da integrare.',photo:null,versions:[{at:'2026-10-11',note:'Ricetta iniziale: dati di lavorazione già condivisi; valori nutrizionali non verificati.'}]}];
 let recipes;try{const s=JSON.parse(localStorage.getItem(KEY));recipes=Array.isArray(s)?s:initial}catch{recipes=initial}let chosen=recipes[0]?.id||null,editing=null,photoBuffer=null;const CATEGORIES=['Tutte','Antipasto','Primo','Secondo','Contorno','Dessert','Dolce','Pane e lievitati','Altro'];const TAGS=['Dietetica','Senza glutine','Proteica','Vegetariana','Vegana','Senza lattosio','Pochi zuccheri','Ricca di fibre'];let currentCategory='Tutte',activeTags=[];function catOf(r){const c=String(r.category||'Altro').trim();return c==='Dolci'?'Dolce':c==='Primi'?'Primo':c==='Secondi'?'Secondo':CATEGORIES.includes(c)?c:'Altro'}
 const $=x=>document.getElementById(x);const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const n=x=>x===null||x===undefined||x===''?null:Number(x);const fmt=x=>x===null||!Number.isFinite(x)?'—':new Intl.NumberFormat('it-IT',{maximumFractionDigits:1}).format(x);function save(){localStorage.setItem(KEY,JSON.stringify(recipes));$('status').textContent='Salvato in questo dispositivo'}
 function validRecipe(r){return r&&typeof r.id==='string'&&typeof r.name==='string'&&Array.isArray(r.ingredients)}
@@ -30,7 +30,7 @@ function show(){list();$('editor').classList.add('hidden');$('viewer').classList
 function edit(id){editing=id;const r=recipes.find(x=>x.id===id)||{name:'',category:'',yield:null,portion:null,state:'In prova',ingredients:[],method:'',notes:'',photo:null};photoBuffer=r.photo||null;$('viewer').classList.add('hidden');$('editor').classList.remove('hidden');$('editHeading').textContent=id?'Modifica ricetta':'Nuova ricetta';const map={Name:'name',Category:'category',Yield:'yield',Portion:'portion',State:'state',Method:'method',Notes:'notes',Kcal:'kcal',Protein:'protein',Carbs:'carbs',Fat:'fat',Fiber:'fiber'};for(const [suffix,prop] of Object.entries(map))$('r'+suffix).value=suffix==='Category'?catOf(r):(r[prop]??'');$('rIngredients').value=r.ingredients.map(i=>`${i.name} | ${i.amount} | ${i.unit}`).join('\n');$('rPhoto').value='';tagUI('editTags',r.tags||[],()=>{});photoState();window.scrollTo(0,0)}function photoState(){$('photoStatus').textContent=photoBuffer?'Foto associata (verrà salvata insieme alla ricetta).':'Nessuna foto'}
 $('recipeForm').onsubmit=e=>{e.preventDefault();const old=recipes.find(x=>x.id===editing);const val=s=>n($(s).value);const ingredients=$('rIngredients').value.split('\n').filter(x=>x.trim()).map(row=>{const [name,amount='',unit='']=row.split('|');return {name:(name||'').trim(),amount:amount.trim(),unit:unit.trim()}});if(!ingredients.length){alert('Inserisci almeno un ingrediente.');return}const now=new Date().toISOString();const r={id:editing||crypto.randomUUID(),name:$('rName').value.trim(),category:$('rCategory').value.trim(),tags:[...$('editTags').querySelectorAll('input:checked')].map(i=>i.value),yield:val('rYield'),portion:val('rPortion'),state:$('rState').value,ingredients,kcal:val('rKcal'),protein:val('rProtein'),carbs:val('rCarbs'),fat:val('rFat'),fiber:val('rFiber'),method:$('rMethod').value,notes:$('rNotes').value,photo:photoBuffer,versions:[...(old?.versions||[]),{at:now,note:old?'Ricetta aggiornata':'Ricetta creata'}],history:old?[...(old.history||[]),{at:now,note:'Versione precedente alla modifica manuale',recipe:{...old,versions:undefined,history:undefined}}]:[]};const copy=[...recipes];if(old)copy[copy.findIndex(x=>x.id===editing)]=r;else copy.unshift(r);try{localStorage.setItem(KEY,JSON.stringify(copy));recipes=copy;chosen=r.id;editing=null;show()}catch{alert('Spazio locale esaurito: riduci la foto oppure esporta un backup. Nessuna modifica salvata.')}};
 $('rPhoto').onchange=e=>{const f=e.target.files?.[0];if(!f)return;if(f.size>2*1024*1024){alert('Foto troppo grande: massimo 2 MB');e.target.value='';return}const reader=new FileReader();reader.onload=()=>{photoBuffer=reader.result;photoState()};reader.readAsDataURL(f)};$('removePhotoBtn').onclick=()=>{photoBuffer=null;photoState()};$('newBtn').onclick=()=>edit(null);$('cancelBtn').onclick=show;$('search').oninput=list;$('resetFilters').onclick=()=>{currentCategory='Tutte';activeTags=[];$('search').value='';list()};
-function exportBackup(){const blob=new Blob([JSON.stringify({app:'Le nostre ricette',version:1,exportedAt:new Date().toISOString(),recipes},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='backup-ricette-'+new Date().toISOString().replace(/[:.]/g,'-').slice(0,19)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);try{localStorage.setItem('ricettario_backup_last',new Date().toISOString())}catch{}}
+function exportBackup(){const blob=new Blob([JSON.stringify({app:'Le nostre ricette',version:1,exportedAt:new Date().toISOString(),ownerAccountSub:googleAccount?.sub||null,recipes},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='backup-ricette-'+new Date().toISOString().replace(/[:.]/g,'-').slice(0,19)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);try{localStorage.setItem('ricettario_backup_last',new Date().toISOString())}catch{}}
 $('exportBtn').onclick=exportBackup;
 $('driveHelpBtn').onclick=()=>{$('cloudPanel').classList.toggle('hidden')};
 $('googleClose').onclick=()=>{$('cloudPanel').classList.add('hidden')};
@@ -38,8 +38,41 @@ $('closeDriveBtn').onclick=()=>{$('drivePanel').classList.add('hidden')};
 $('driveExportBtn').onclick=exportBackup;
 $('openDriveBtn').onclick=()=>window.open('https://drive.google.com/drive/my-drive','_blank','noopener,noreferrer');
 $('restoreBtn').onclick=()=>$('restoreFile').click();
-$('restoreFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const raw=JSON.parse(await f.text());if(raw.app!=='Le nostre ricette'||!Array.isArray(raw.recipes)||!raw.recipes.every(validRecipe))throw Error('Questo file non è un backup completo valido del ricettario.');const unique=new Set(raw.recipes.map(r=>r.id));if(unique.size!==raw.recipes.length)throw Error('Il backup contiene identificativi duplicati.');const confirmation='ATTENZIONE: vuoi RIPRISTINARE tutto il ricettario dal backup?\n\nAttuali: '+recipes.length+' ricette\nBackup: '+raw.recipes.length+' ricette\nCreato: '+(raw.exportedAt||'data non disponibile')+'\n\nLe modifiche locali non presenti nel backup saranno perse. Prima esporta una copia delle ricette attuali.\n\nOK per sostituire interamente, Annulla per non fare nulla.';if(!confirm(confirmation))return;localStorage.setItem(KEY,JSON.stringify(raw.recipes));recipes=raw.recipes;chosen=recipes[0]?.id||null;editing=null;currentCategory='Tutte';activeTags=[];$('search').value='';show();alert('Ripristino completato: '+recipes.length+' ricette caricate.')}catch(err){alert('Ripristino non riuscito: '+err.message)}finally{e.target.value=''}};
+$('restoreFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{importArchiveWithoutDeleting(JSON.parse(await f.text()))}catch(err){alert('Importazione non riuscita: '+err.message)}finally{e.target.value=''}};
 function parseImport(text){let raw=text.trim();if(raw.startsWith('```'))raw=raw.replace(/^```(?:json)?\s*/i,'').replace(/\s*```\s*$/,'');const data=JSON.parse(raw);const items=Array.isArray(data)?data:Array.isArray(data?.recipes)?data.recipes:data?.id?[data]:null;if(!items||!items.length||!items.every(validRecipe))throw Error('JSON non valido: serve una ricetta con id, nome e ingredienti, oppure un file esportato dal ricettario.');return items}
+function mergeAddOnly(current,incoming,source='altro archivio'){
+ const result=[...current], ids=new Set(result.map(r=>r.id));
+ const signatures=new Set(result.map(r=>JSON.stringify([r.name,r.ingredients,r.method,r.photo])));
+ let added=0, skipped=0, conflicts=0;
+ for(const item of incoming){
+  const signature=JSON.stringify([item.name,item.ingredients,item.method,item.photo]);
+  if(signatures.has(signature)){skipped++;continue}
+  let r={...item};
+  if(ids.has(r.id)){
+   // Preserva entrambe le versioni, anziché sostituire il contenuto del destinatario.
+   const original= result.find(x=>x.id===r.id);
+   if(JSON.stringify(original)===JSON.stringify(r)){skipped++;continue}
+   r={...r,id:crypto.randomUUID(),name:r.name+' (importata da '+source+')'};
+   conflicts++;
+  }
+  ids.add(r.id);signatures.add(signature);result.push(r);added++;
+ }
+ return {result,added,skipped,conflicts};
+}
+function importArchiveWithoutDeleting(raw){
+ if(raw.app!=='Le nostre ricette'||!Array.isArray(raw.recipes)||!raw.recipes.every(validRecipe))throw Error('Archivio non valido.');
+ const other=Boolean(raw.ownerAccountSub&&googleAccount&&raw.ownerAccountSub!==googleAccount.sub);
+ const source=other?'altro account':'backup';
+ const warning=(other?'ATTENZIONE: IL BACKUP APPARTIENE A UN ALTRO ACCOUNT GOOGLE.\n\n':'')+
+ 'Le ricette del file verranno AGGIUNTE all’archivio corrente. Nessuna ricetta esistente sarà cancellata o sovrascritta. Se lo stesso ID contiene una versione diversa, manterremo entrambe.\n\nPrima è consigliato esportare un backup manuale del tuo archivio.\n\nVuoi procedere?';
+ if(!confirm(warning))return false;
+ const merged=mergeAddOnly(recipes,raw.recipes,source);
+ localStorage.setItem(KEY,JSON.stringify(merged.result));
+ recipes=merged.result;chosen=recipes[0]?.id||null;editing=null;show();
+ if(googleAccount){localStorage.removeItem(HASH_KEY);$('autoSync').checked=false;localStorage.setItem(AUTO_KEY,'no')}
+ alert('Importazione senza cancellazioni: '+merged.added+' aggiunte, '+merged.skipped+' già presenti, '+merged.conflicts+' versioni mantenute separatamente. Prima di sincronizzare, verifica le ricette e crea un backup.');
+ return true;
+}
 function diffSummary(old,next){const fields=[['name','Titolo'],['category','Categoria'],['state','Stato'],['yield','Peso finale'],['portion','Porzione'],['ingredients','Ingredienti'],['method','Preparazione'],['notes','Note'],['tags','Etichette'],['kcal','Calorie'],['protein','Proteine'],['carbs','Carboidrati'],['fat','Grassi'],['fiber','Fibre']];return fields.filter(([k])=>Object.prototype.hasOwnProperty.call(next,k)&&JSON.stringify(old[k]??null)!==JSON.stringify(next[k]??null)).map(([,label])=>label)}
 function addImported(items){
  const norm=s=>String(s||'').trim().toLocaleLowerCase('it');
@@ -60,64 +93,224 @@ function addImported(items){
  recipes=revised;chosen=(updates[0]?.old.id)||adds[0]?.id||chosen;currentCategory='Tutte';activeTags=[];$('search').value='';show();alert('Operazione completata: '+adds.length+' aggiunte, '+updates.length+' aggiornate, '+unchanged.length+' lasciate inalterate.');return true
 }
 $('quickImportBtn').onclick=()=>{$('quickImportPanel').classList.toggle('hidden');if(!$('quickImportPanel').classList.contains('hidden'))$('quickImportText').focus()};$('quickImportCancel').onclick=()=>$('quickImportPanel').classList.add('hidden');$('quickImportConfirm').onclick=()=>{try{const items=parseImport($('quickImportText').value);if(addImported(items)){$('quickImportText').value='';$('quickImportPanel').classList.add('hidden')}}catch(err){alert('Impossibile importare: '+err.message)}};
-$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{addImported(parseImport(await f.text()))}catch(err){alert('Impossibile importare: '+err.message)}finally{e.target.value=''}};
+$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const raw=JSON.parse(await f.text());if(raw?.app==='Le nostre ricette'&&Array.isArray(raw.recipes))importArchiveWithoutDeleting(raw);else addImported(parseImport(JSON.stringify(raw)))}catch(err){alert('Impossibile importare: '+err.message)}finally{e.target.value=''}};
 show();
 // Google Drive beta: accesso limitato alla cartella appDataFolder.
 const CLOUD_FILE='ricettario-archivio.json';
-let googleToken=null, googleTokenClient=null;
-const cloudMsg=(message)=>{$('googleState').textContent=message};
+let googleToken=null, googleTokenClient=null, googleAccount=null, googleEpoch=0;
+const cloudMsg=(message)=>{$('googleState').textContent=message;updateCloudBadge(message)};
+function updateCloudBadge(message){const el=$('status');if(!el)return;el.textContent=message||'Salvataggio locale';el.title=message||'';}
 const cloudButtons=(connected)=>{for(const id of ['googleUpload','googleDownload','googleDisconnect'])$(id).disabled=!connected};
 const clientKey='ricettario_google_client_id';
 $('googleClientId').value=localStorage.getItem(clientKey)||'85416369809-2d5jhacfm81a02r8f7h15clqj5fdoi2a.apps.googleusercontent.com';
+
+// Account isolation: never share the same browser storage namespace across Google users.
+const LEGACY_KEY='ricettario_v01', ACCOUNT_PREFIX='ricettario_account_';
+const ACCOUNT_ALERT='ATTENZIONE: archivio appartenente a un altro account Google. Per trasferire ricette, esporta il JSON dall’account di origine, collega quello di destinazione e usa Importa file / backup JSON. Le ricette saranno AGGIUNTE, mai sostituite. Prima scarica un backup manuale. La sincronizzazione automatica tra account diversi non è consentita.';
+let previousGoogleSubject=null;
+function suspendCloudForAccount(reason){
+ $('autoSync').checked=false;
+ localStorage.setItem(AUTO_KEY,'no');
+ cloudMsg('⚠️ '+reason+' Sincronizzazione sospesa: prima scarica un backup manuale.');
+}
+function assertArchiveOwnership(){
+ verifyAccount();
+ const ownerKey=ACCOUNT_PREFIX+googleAccount.sub+':owner';
+ const stored=localStorage.getItem(ownerKey);
+ if(stored!==googleAccount.sub){
+  suspendCloudForAccount('Archivio non verificato per l’account '+googleAccount.email+'.');
+  throw Error(ACCOUNT_ALERT);
+ }
+ if(KEY!==ACCOUNT_PREFIX+stored+':recipes'){
+  suspendCloudForAccount('Archivio locale di un account diverso.');
+  throw Error(ACCOUNT_ALERT);
+ }
+ return googleAccount.sub;
+}
+function assertRemoteOwnership(remote){
+ if(remote.ownerAccountSub&&remote.ownerAccountSub!==googleAccount?.sub){
+  suspendCloudForAccount('Il backup remoto risulta associato a un altro account.');
+  throw Error(ACCOUNT_ALERT);
+ }
+}
+
+function verifyAccount(){if(!googleToken||!googleAccount||KEY!==ACCOUNT_PREFIX+googleAccount.sub+':recipes')throw Error('Account Google non verificato: sincronizzazione bloccata.');return googleAccount.sub}
+function activateAccount(identity){
+  if(!identity?.sub||!identity?.email)throw Error('Google non ha restituito una identità verificabile.');
+  const nextKey=ACCOUNT_PREFIX+identity.sub+':recipes';
+  const nextAuto=ACCOUNT_PREFIX+identity.sub+':auto';
+  const nextHash=ACCOUNT_PREFIX+identity.sub+':hash';
+  const nextBase=ACCOUNT_PREFIX+identity.sub+':baseline';
+  const existing=localStorage.getItem(nextKey);
+  const ownerKey=ACCOUNT_PREFIX+identity.sub+':owner';
+  const existingOwner=localStorage.getItem(ownerKey);
+  const changedAccount=previousGoogleSubject!==null&&previousGoogleSubject!==identity.sub;
+  previousGoogleSubject=identity.sub;
+  if(changedAccount)alert('CAMBIO ACCOUNT GOOGLE RILEVATO.\n\nIl nuovo account dispone del proprio archivio. Vuoi copiare ricette dal precedente? Esporta un JSON dall’account di origine e importalo qui: saranno aggiunte senza cancellare le ricette esistenti. Prima scarica un backup manuale. La sincronizzazione automatica rimane disattivata.');
+  if(existingOwner&&existingOwner!==identity.sub)alert(ACCOUNT_ALERT);
+  if(!existingOwner&&existing===null)localStorage.setItem(ownerKey,identity.sub);
+  // Un archivio locale preesistente e privo di proprietario non deve essere caricato automaticamente.
+  if(!existingOwner&&existing!==null)alert('ATTENZIONE: archivio locale preesistente senza proprietario verificato. Non è consentito caricarlo su Drive. Esporta prima un backup manuale e recupera la copia dall’account corretto.');
+  // Never copy legacy recipes into an account automatically. Existing data stay untouched.
+  KEY=nextKey;AUTO_KEY=nextAuto;HASH_KEY=nextHash;BASE_KEY=nextBase;
+  googleAccount=identity;
+  const raw=localStorage.getItem(KEY);
+  try{const parsed=raw===null?[]:JSON.parse(raw);recipes=Array.isArray(parsed)&&parsed.every(validRecipe)?parsed:[]}catch{recipes=[]}
+  // No automatic operations merely because old account auto-sync was enabled.
+  $('autoSync').checked=false;
+  localStorage.setItem(AUTO_KEY,'no');
+  editing=null;chosen=recipes[0]?.id||null;photoBuffer=null;currentCategory='Tutte';activeTags=[];$('search').value='';
+  $('editor').classList.add('hidden');show();
+}
+function closeGoogleSession(){
+  googleEpoch++;googleToken=null;googleAccount=null;cloudButtons(false);
+  $('autoSync').checked=false;
+  // Return to the original local store rather than exposing another user's store.
+  KEY=LEGACY_KEY;AUTO_KEY='ricettario_auto_sync_09';HASH_KEY='ricettario_cloud_hash_09';BASE_KEY='ricettario_cloud_baseline';
+  try{const old=JSON.parse(localStorage.getItem(KEY));recipes=Array.isArray(old)?old:initial}catch{recipes=initial}
+  chosen=recipes[0]?.id||null;editing=null;show();
+}
+async function resolveGoogleIdentity(token){
+ const response=await fetch('https://openidconnect.googleapis.com/v1/userinfo',{headers:{Authorization:'Bearer '+token}});
+ if(!response.ok)throw Error('Impossibile verificare l’identità Google ('+response.status+').');
+ const profile=await response.json();
+ if(!profile.sub||!profile.email||profile.email_verified!==true)throw Error('Identità Google incompleta o email non verificata.');
+ return {sub:profile.sub,email:profile.email};
+}
 function googleOriginOk(){return location.protocol==='https:'||['localhost','127.0.0.1'].includes(location.hostname)}
 function loadGoogleScript(){return new Promise((resolve,reject)=>{if(window.google?.accounts?.oauth2)return resolve();const sc=document.createElement('script');sc.src='https://accounts.google.com/gsi/client';sc.async=true;sc.onload=resolve;sc.onerror=()=>reject(Error('Impossibile caricare Google Identity Services.'));document.head.appendChild(sc)})}
 function gFetch(url,options={}){return fetch(url,{...options,headers:{Authorization:'Bearer '+googleToken,...(options.headers||{})}}).then(async r=>{if(!r.ok){const message=await r.text();throw Error('Google Drive HTTP '+r.status+': '+message.slice(0,220))}return r.status===204?null:r.json()})}
-async function cloudMeta(){const q=encodeURIComponent("name = '"+CLOUD_FILE+"' and trashed = false");const r=await gFetch('https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q='+q+'&fields=files(id,name,modifiedTime),nextPageToken&page_size=100');const files=r.files||[];if(files.length>1)throw Error('Sono state trovate più copie del ricettario: serve risolvere il duplicato prima di continuare.');return files[0]||null}
-function cloudSnapshot(){return JSON.stringify({app:'Le nostre ricette',version:1,exportedAt:new Date().toISOString(),recipes})}
+async function cloudMeta(){verifyAccount();const q=encodeURIComponent("name = '"+CLOUD_FILE+"' and trashed = false");const r=await gFetch('https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q='+q+'&fields=files(id,name,modifiedTime),nextPageToken&page_size=100');const files=r.files||[];if(files.length>1)throw Error('Sono state trovate più copie del ricettario: serve risolvere il duplicato prima di continuare.');return files[0]||null}
+function cloudSnapshot(){assertArchiveOwnership();return JSON.stringify({app:'Le nostre ricette',version:1,ownerAccountSub:googleAccount.sub,exportedAt:new Date().toISOString(),recipes})}
 // Sincronizzazione assistita: la versione locale resta sempre disponibile.
 // L'impronta descrive i dati delle ricette, non la data del backup.
-const AUTO_KEY='ricettario_auto_sync_09', HASH_KEY='ricettario_cloud_hash_09';
+let AUTO_KEY='ricettario_auto_sync_09', HASH_KEY='ricettario_cloud_hash_09', BASE_KEY='ricettario_cloud_baseline';
 function recipeFingerprint(items=recipes){const str=JSON.stringify(items);let h=2166136261;for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)}return (h>>>0).toString(16)+':'+str.length}
 let syncBusy=false, syncWarning='', syncCheckTime=0;
 $('autoSync').checked=localStorage.getItem(AUTO_KEY)==='yes';
 $('autoSync').onchange=()=>{
  if($('autoSync').checked){
   if(!googleToken){alert('Collega prima l’account Google.');$('autoSync').checked=false;return}
+  try{assertArchiveOwnership()}catch(e){alert(e.message);$('autoSync').checked=false;return}
   if(!localStorage.getItem(HASH_KEY)||localStorage.getItem(HASH_KEY)!==recipeFingerprint()){
    alert('Prima esegui «Recupera da Drive» per allineare questa copia, dopo aver esportato un backup locale. Poi potrai attivare la sincronizzazione.');$('autoSync').checked=false;return
   }
  }
- localStorage.setItem(AUTO_KEY,$('autoSync').checked?'yes':'no');cloudMsg($('autoSync').checked?'Sincronizzazione assistita attiva: le modifiche locali verranno inviate su Drive.':'Sincronizzazione assistita disattivata.');
+ localStorage.setItem(AUTO_KEY,$('autoSync').checked?'yes':'no');cloudMsg($('autoSync').checked?'Sincronizzazione assistita attiva: modifiche inviate e aggiornamenti recuperati quando sicuri.':'Sincronizzazione assistita disattivata.');
 };
 async function syncAutomatic(){
+ if(!googleAccount)return;
  if(syncBusy||!googleToken||!$('autoSync').checked)return;
+ try{assertArchiveOwnership()}catch(e){alert(e.message);return}
  const hash=localStorage.getItem(HASH_KEY);
  if(!hash||hash===recipeFingerprint())return;
  syncBusy=true;
  try{
   const before=recipeFingerprint();const meta=await cloudMeta();
-  if(!meta||meta.modifiedTime!==localStorage.getItem('ricettario_cloud_baseline')){syncWarning='Drive è stato modificato altrove: sincronizzazione interrotta. Esporta un backup e confronta i dati prima di recuperare.';cloudMsg(syncWarning);$('autoSync').checked=false;localStorage.setItem(AUTO_KEY,'no');return}
+  if(!meta||meta.modifiedTime!==localStorage.getItem(BASE_KEY)){syncWarning='Drive è stato modificato altrove: sincronizzazione interrotta. Esporta un backup e confronta i dati prima di recuperare.';cloudMsg(syncWarning);$('autoSync').checked=false;localStorage.setItem(AUTO_KEY,'no');return}
   if(before!==recipeFingerprint())return;
+  const cloudBefore=await gFetch('https://www.googleapis.com/drive/v3/files/'+encodeURIComponent(meta.id)+'?alt=media');
+  assertRemoteOwnership(cloudBefore);
+  if(!Array.isArray(cloudBefore.recipes))throw Error('Backup remoto non valido');
+  const localIds=new Set(recipes.map(r=>r.id));
+  if(cloudBefore.recipes.some(r=>!localIds.has(r.id))){$('autoSync').checked=false;localStorage.setItem(AUTO_KEY,'no');cloudMsg('Salvataggio sospeso: alcune ricette su Drive mancano localmente. Recupera e unisci prima di salvare.');return}
   const updated=await gFetch('https://www.googleapis.com/upload/drive/v3/files/'+encodeURIComponent(meta.id)+'?uploadType=media&fields=id,modifiedTime',{method:'PATCH',headers:{'Content-Type':'application/json'},body:cloudSnapshot()});
-  localStorage.setItem('ricettario_cloud_baseline',updated.modifiedTime);
+  localStorage.setItem(BASE_KEY,updated.modifiedTime);
   localStorage.setItem(HASH_KEY,before);
-  cloudMsg('Modifiche salvate su Drive automaticamente.');
- }catch(e){cloudMsg('Sincronizzazione sospesa: '+e.message)}finally{syncBusy=false}
+  cloudMsg('Modifiche salvate su Drive automaticamente · '+new Date().toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'}));
+ }catch(e){if(e.message.includes('Operazione BLOCCATA'))alert(e.message);cloudMsg('Sincronizzazione sospesa: '+e.message)}finally{syncBusy=false}
 }
-async function checkRemoteUpdates(){
- if(syncBusy||!googleToken||!$('autoSync').checked||Date.now()-syncCheckTime<12000)return;
+// Recupero automatico prudente: non sostituire MAI modifiche locali non sincronizzate.
+async function checkRemoteUpdates(force=false){
+ if(!googleAccount)return;
+ if(syncBusy||!googleToken||!$('autoSync').checked||(!force&&Date.now()-syncCheckTime<12000))return;
+ try{assertArchiveOwnership()}catch(e){alert(e.message);return}
  syncCheckTime=Date.now();syncBusy=true;
- try{const meta=await cloudMeta();if(meta&&meta.modifiedTime!==localStorage.getItem('ricettario_cloud_baseline')){
-  $('autoSync').checked=false;localStorage.setItem(AUTO_KEY,'no');cloudMsg('Esiste una copia più recente o diversa su Drive. La sincronizzazione è in pausa: esporta un backup locale e usa «Recupera da Drive» solo dopo aver controllato le modifiche.');
- }}catch(e){cloudMsg('Controllo Drive non riuscito: '+e.message)}finally{syncBusy=false}
+ try{
+  const meta=await cloudMeta();
+  if(!meta){cloudMsg('Drive non contiene ancora un archivio. Esegui un salvataggio manuale.');return}
+  const baseline=localStorage.getItem(BASE_KEY);
+  if(meta.modifiedTime===baseline)return;
+  const savedHash=localStorage.getItem(HASH_KEY);
+  if(!savedHash||savedHash!==recipeFingerprint()||editing!==null||!$('editor').classList.contains('hidden')){
+   $('autoSync').checked=false;localStorage.setItem(AUTO_KEY,'no');
+   cloudMsg('Aggiornamento su Drive, ma ci sono modifiche locali o una ricetta aperta: sincronizzazione sospesa. Esporta un backup e confronta prima di recuperare.');return;
+  }
+  cloudMsg('Aggiornamento trovato su Drive: verifico l’archivio…');
+  const remote=await gFetch('https://www.googleapis.com/drive/v3/files/'+encodeURIComponent(meta.id)+'?alt=media');
+  assertRemoteOwnership(remote);
+  if(remote.app!=='Le nostre ricette'||!Array.isArray(remote.recipes)||!remote.recipes.every(validRecipe))throw Error('Archivio remoto non valido');
+  if(new Set(remote.recipes.map(r=>r.id)).size!==remote.recipes.length)throw Error('Identificativi duplicati nel cloud');
+  // Ricontrollo la versione prima di applicare il download.
+  const current=await cloudMeta();
+  if(!current||current.modifiedTime!==meta.modifiedTime)throw Error('L’archivio su Drive è cambiato durante il recupero. Riprovare.');
+  if(savedHash!==recipeFingerprint()||editing!==null||!$('editor').classList.contains('hidden')){
+    cloudMsg('Sono comparse modifiche locali durante il recupero. Nessun dato è stato sostituito.');return;
+  }
+  const merged=mergeAddOnly(recipes,remote.recipes,'Drive');
+  localStorage.setItem(KEY,JSON.stringify(merged.result));
+  localStorage.setItem(ACCOUNT_PREFIX+googleAccount.sub+':owner',googleAccount.sub);
+  recipes=merged.result;
+  localStorage.setItem(BASE_KEY,meta.modifiedTime);
+  if(JSON.stringify(recipes)===JSON.stringify(remote.recipes))localStorage.setItem(HASH_KEY,recipeFingerprint());
+  else{$('autoSync').checked=false;localStorage.setItem(AUTO_KEY,'no');localStorage.removeItem(HASH_KEY)}
+  chosen=recipes.some(r=>r.id===chosen)?chosen:recipes[0]?.id||null;
+  show();
+  cloudMsg('Aggiornamento ricevuto senza cancellazioni: '+merged.added+' nuove. '+($('autoSync').checked?'Archivio allineato.':'Differenze mantenute: controlla e salva manualmente la copia unificata.'));
+ }catch(e){cloudMsg('Recupero automatico non riuscito: '+e.message)}finally{syncBusy=false}
 }
-setInterval(()=>{syncAutomatic()},15000);
-window.addEventListener('focus',()=>{checkRemoteUpdates()});
+setInterval(()=>{if(googleToken&&$('autoSync').checked){syncAutomatic().then(()=>checkRemoteUpdates())}},20000);
+window.addEventListener('focus',()=>{if(googleToken&&$('autoSync').checked)syncAutomatic().then(()=>checkRemoteUpdates(true))});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&googleToken&&$('autoSync').checked)syncAutomatic().then(()=>checkRemoteUpdates(true))});
 
-async function cloudUpload(){try{cloudMsg('Verifico lo stato dell’archivio remoto…');const meta=await cloudMeta();const baseline=localStorage.getItem('ricettario_cloud_baseline');if(meta&&meta.modifiedTime!==baseline){throw Error('Su Drive esiste una versione non ancora caricata su questo dispositivo. Usa «Recupera da Drive» dopo aver esportato un backup locale.');}if(!confirm('Salvare su Google Drive le '+recipes.length+' ricette attualmente presenti su questo dispositivo?'))return;const content=cloudSnapshot();let updated;if(meta){updated=await gFetch('https://www.googleapis.com/upload/drive/v3/files/'+encodeURIComponent(meta.id)+'?uploadType=media&fields=id,modifiedTime',{method:'PATCH',headers:{'Content-Type':'application/json'},body:content})}else{const boundary='ricettario_boundary_2026';const body='--'+boundary+'\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n'+JSON.stringify({name:CLOUD_FILE,parents:['appDataFolder'],mimeType:'application/json'})+'\r\n--'+boundary+'\r\nContent-Type: application/json\r\n\r\n'+content+'\r\n--'+boundary+'--';updated=await gFetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,modifiedTime',{method:'POST',headers:{'Content-Type':'multipart/related; boundary='+boundary},body})}localStorage.setItem('ricettario_cloud_baseline',updated.modifiedTime);localStorage.setItem(HASH_KEY,recipeFingerprint());cloudMsg('Copia salvata su Google Drive. Non è ancora un salvataggio automatico.')}catch(e){cloudMsg('Salvataggio non riuscito: '+e.message)}}
-async function cloudDownload(){try{cloudMsg('Cerco il ricettario su Google Drive…');const meta=await cloudMeta();if(!meta){cloudMsg('Nessun archivio trovato su questo account Google. Per crearne uno usa «Salva copia su Drive».');return}const remote=await gFetch('https://www.googleapis.com/drive/v3/files/'+encodeURIComponent(meta.id)+'?alt=media');if(remote.app!=='Le nostre ricette'||!Array.isArray(remote.recipes)||!remote.recipes.every(validRecipe))throw Error('Il file Drive non contiene un archivio valido.');const ids=new Set(remote.recipes.map(r=>r.id));if(ids.size!==remote.recipes.length)throw Error('Sono presenti ID duplicati nel cloud.');if(!confirm('Recuperare '+remote.recipes.length+' ricette da Drive? SOSTITUIRÀ le '+recipes.length+' ricette locali. Esporta prima un backup se hai modifiche non salvate.'))return;localStorage.setItem(KEY,JSON.stringify(remote.recipes));localStorage.setItem('ricettario_cloud_baseline',meta.modifiedTime);recipes=remote.recipes;localStorage.setItem(HASH_KEY,recipeFingerprint());chosen=recipes[0]?.id||null;editing=null;currentCategory='Tutte';activeTags=[];$('search').value='';show();cloudMsg('Archivio recuperato: '+recipes.length+' ricette.')}catch(e){cloudMsg('Recupero non riuscito: '+e.message)}}
-$('googleConnect').onclick=async()=>{const id=$('googleClientId').value.trim();if(!/^[\w.-]+\.apps\.googleusercontent\.com$/.test(id)){cloudMsg('Inserisci un OAuth Client ID Web valido.');return}if(!googleOriginOk()){cloudMsg('Per accedere a Google serve un sito HTTPS (oppure localhost per sviluppo). Il file HTML aperto dal PC non basta.');return}try{await loadGoogleScript();localStorage.setItem(clientKey,id);googleTokenClient=google.accounts.oauth2.initTokenClient({client_id:id,scope:'https://www.googleapis.com/auth/drive.appdata',callback:(response)=>{if(response.error){cloudMsg('Autorizzazione rifiutata: '+response.error);return}googleToken=response.access_token;cloudButtons(true);cloudMsg('Account collegato. Puoi salvare, recuperare o attivare la sincronizzazione assistita dopo un recupero.')}});googleTokenClient.requestAccessToken({prompt:'consent'})}catch(e){cloudMsg('Accesso non riuscito: '+e.message)}};
+async function cloudUpload(){if(syncBusy){cloudMsg('Operazione cloud già in corso.');return}syncBusy=true;try{assertArchiveOwnership();cloudMsg('Verifico lo stato dell’archivio remoto…');const meta=await cloudMeta();const baseline=localStorage.getItem(BASE_KEY);if(meta&&meta.modifiedTime!==baseline){throw Error('Su Drive esiste una versione non ancora caricata su questo dispositivo. Usa «Recupera da Drive» dopo aver esportato un backup locale.');}if(!confirm('Backup MANUALE sul Google Drive di '+googleAccount.email+'\n\nStai per salvare '+recipes.length+' ricette. Se hai cambiato account, un backup errato potrebbe far perdere le ricette precedenti.\n\nÈ consigliato scaricare prima un backup JSON sul dispositivo.\n\nConfermi soltanto se questo è il tuo archivio corretto?'))return;if(meta){const remote=await gFetch('https://www.googleapis.com/drive/v3/files/'+encodeURIComponent(meta.id)+'?alt=media');assertRemoteOwnership(remote);if(!Array.isArray(remote.recipes)||!remote.recipes.every(validRecipe))throw Error('Archivio su Drive non valido.');const merged=mergeAddOnly(recipes,remote.recipes,'Drive');if(merged.added||merged.conflicts){localStorage.setItem(KEY,JSON.stringify(merged.result));recipes=merged.result;show();cloudMsg('Ricette da Drive aggiunte prima del backup: '+merged.added+'. Nessuna eliminazione.')}}const content=cloudSnapshot();let updated;if(meta){updated=await gFetch('https://www.googleapis.com/upload/drive/v3/files/'+encodeURIComponent(meta.id)+'?uploadType=media&fields=id,modifiedTime',{method:'PATCH',headers:{'Content-Type':'application/json'},body:content})}else{const boundary='ricettario_boundary_2026';const body='--'+boundary+'\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n'+JSON.stringify({name:CLOUD_FILE,parents:['appDataFolder'],mimeType:'application/json'})+'\r\n--'+boundary+'\r\nContent-Type: application/json\r\n\r\n'+content+'\r\n--'+boundary+'--';updated=await gFetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,modifiedTime',{method:'POST',headers:{'Content-Type':'multipart/related; boundary='+boundary},body})}localStorage.setItem(BASE_KEY,updated.modifiedTime);localStorage.setItem(HASH_KEY,recipeFingerprint());cloudMsg('Copia unificata salvata su Google Drive: nessuna ricetta precedente rimossa.')}catch(e){if(e.message.includes('Operazione BLOCCATA'))alert(e.message);cloudMsg('Salvataggio non riuscito: '+e.message)}finally{syncBusy=false}}
+async function cloudDownload(){
+ if(syncBusy){cloudMsg('Operazione cloud già in corso.');return}
+ syncBusy=true;
+ try{
+  verifyAccount();cloudMsg('Cerco il ricettario su Google Drive…');
+  const meta=await cloudMeta();if(!meta){cloudMsg('Nessun archivio trovato su questo account Google.');return}
+  const remote=await gFetch('https://www.googleapis.com/drive/v3/files/'+encodeURIComponent(meta.id)+'?alt=media');
+  if(remote.app!=='Le nostre ricette'||!Array.isArray(remote.recipes)||!remote.recipes.every(validRecipe))throw Error('Archivio Drive non valido.');
+  assertRemoteOwnership(remote);
+  if(!confirm('Importare '+remote.recipes.length+' ricette da Drive nell’account '+googleAccount.email+'?\n\nLe ricette locali NON saranno cancellate né sovrascritte. Eventuali versioni diverse saranno conservate. Si consiglia un backup manuale prima di continuare.'))return;
+  const merged=mergeAddOnly(recipes,remote.recipes,'Drive');
+  localStorage.setItem(KEY,JSON.stringify(merged.result));recipes=merged.result;
+  localStorage.setItem(ACCOUNT_PREFIX+googleAccount.sub+':owner',googleAccount.sub);
+  localStorage.setItem(BASE_KEY,meta.modifiedTime);
+  // Non considerare sincronizzata una copia locale con ricette non ancora presenti sul Drive.
+  const matches=JSON.stringify(recipes)===JSON.stringify(remote.recipes);
+  if(matches)localStorage.setItem(HASH_KEY,recipeFingerprint());else{localStorage.removeItem(HASH_KEY);$('autoSync').checked=false;localStorage.setItem(AUTO_KEY,'no')}
+  chosen=recipes[0]?.id||null;editing=null;currentCategory='Tutte';activeTags=[];$('search').value='';show();
+  cloudMsg('Recupero senza cancellazioni: '+merged.added+' aggiunte, '+merged.skipped+' già presenti. '+(matches?'Archivio allineato.':'Verifica le differenze e salva manualmente la copia unificata prima di attivare la sincronizzazione.'));
+ }catch(e){cloudMsg('Recupero non riuscito: '+e.message)}finally{syncBusy=false}
+}
+$('googleConnect').onclick=async()=>{
+ const id=$('googleClientId').value.trim();
+ if(!/^[\w.-]+\.apps\.googleusercontent\.com$/.test(id)){cloudMsg('Inserisci un OAuth Client ID Web valido.');return}
+ if(!googleOriginOk()){cloudMsg('Per accedere a Google serve HTTPS.');return}
+ if(syncBusy){cloudMsg('Attendi il completamento della sincronizzazione prima di cambiare account.');return}
+ // Disconnect the previous account before opening a new Google authorization flow.
+ if(googleToken&&window.google?.accounts?.oauth2)google.accounts.oauth2.revoke(googleToken,()=>{});
+ closeGoogleSession();const epoch=googleEpoch;
+ try{
+  await loadGoogleScript();localStorage.setItem(clientKey,id);
+  googleTokenClient=google.accounts.oauth2.initTokenClient({client_id:id,scope:'openid email https://www.googleapis.com/auth/drive.appdata',callback:async(response)=>{
+    if(epoch!==googleEpoch)return;
+    if(response.error){cloudMsg('Autorizzazione rifiutata: '+response.error);return}
+    try{
+      const identity=await resolveGoogleIdentity(response.access_token);
+      if(epoch!==googleEpoch)return;
+      googleToken=response.access_token;
+      activateAccount(identity);
+      cloudButtons(true);
+      cloudMsg('Account verificato: '+identity.email+'. Archivio locale separato. Recupera da Drive per abilitarne la sincronizzazione.');
+    }catch(err){closeGoogleSession();cloudMsg('Accesso bloccato: '+err.message)}
+  }});
+  googleTokenClient.requestAccessToken({prompt:'select_account consent'});
+ }catch(e){cloudMsg('Accesso non riuscito: '+e.message)}
+};
 $('googleUpload').onclick=cloudUpload;
 $('googleDownload').onclick=cloudDownload;
-$('googleDisconnect').onclick=()=>{if(googleToken&&window.google?.accounts?.oauth2)google.accounts.oauth2.revoke(googleToken,()=>{});googleToken=null;googleTokenClient=null;cloudButtons(false);$('autoSync').checked=false;localStorage.setItem(AUTO_KEY,'no');cloudMsg('Disconnesso.')};
+$('googleDisconnect').onclick=()=>{if(syncBusy){cloudMsg('Attendi la fine dell’operazione cloud prima di disconnetterti.');return}if(googleToken&&window.google?.accounts?.oauth2)google.accounts.oauth2.revoke(googleToken,()=>{});closeGoogleSession();cloudMsg('Disconnesso. Nessun archivio di un altro account è stato caricato.');};
 </script></body></html>
