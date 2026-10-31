@@ -1,0 +1,9 @@
+{
+  "schema": "ricettario-catalogo-update-v1",
+  "clientProtocol": 1,
+  "version": "1.2.1",
+  "file": "catalogo_alimentare_it_v1_2_1.json",
+  "sha256": "359d18704ff9d61ceaa4ae6f7104f2badc0dc86acf7db74591916ddea1444fd4",
+  "descrizione": "Test aggiornamento automatico: +1 scheda acqua minerale frizzante (207 → 208).",
+  "published": "2026-10-31"
+}
