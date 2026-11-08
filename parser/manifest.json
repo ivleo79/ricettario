@@ -1,0 +1,32 @@
+{
+  "clientProtocol": 1,
+  "files": {
+    "categorie": {
+      "file": "it/categorie.json",
+      "sha256": "30935a67899d4f8ca8b7654e8ffab4ade40b7895c59308bf6ffce1fe0c410599"
+    },
+    "lessico": {
+      "file": "it/lessico.json",
+      "sha256": "abae3f45ae041fb142ea2dd56602952f5c11244da2def33784381b85a9f5c5bf"
+    },
+    "normalizzazioni": {
+      "file": "it/normalizzazioni.json",
+      "sha256": "f1b1ad22dd1d656b4fc127e1b2b5fdc9c7f24538dc84f22d50e0c904317e6f4e"
+    },
+    "quantita": {
+      "file": "it/quantita.json",
+      "sha256": "33948a06cba821f0656a194a743ae5627e01a63f569689e509ab01d907949092"
+    },
+    "sezioni": {
+      "file": "it/sezioni.json",
+      "sha256": "3efcaf2918b2d63324e9b8251a27d718fd437be813279d8f7475e49f1acb4918"
+    },
+    "unita": {
+      "file": "it/unita.json",
+      "sha256": "6a296d1caf7cc31edf072bb1209cb779243adc3ea068086a119060193b67e148"
+    }
+  },
+  "language": "it",
+  "schema": "ricettario-parser-manifest-v1",
+  "version": "1.0.0"
+}

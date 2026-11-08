@@ -1,0 +1,27 @@
+{
+  "ingredients": [
+    "ingredienti",
+    "occorrente",
+    "cosa serve"
+  ],
+  "kind": "sezioni",
+  "language": "it",
+  "method": [
+    "preparazione",
+    "procedimento",
+    "istruzioni",
+    "passaggi",
+    "come si prepara",
+    "come procedere",
+    "come fare",
+    "cottura",
+    "note",
+    "consigli"
+  ],
+  "schema": "ricettario-parser-data-v1",
+  "titleMarkers": [
+    "titolo",
+    "nome ricetta"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,29 @@
+{
+  "approximation": [
+    "circa"
+  ],
+  "fractions": {
+    "¼": 0.25,
+    "½": 0.5,
+    "¾": 0.75,
+    "⅓": 0.3333333333333333,
+    "⅔": 0.6666666666666666
+  },
+  "keepUncertain": true,
+  "kind": "quantita",
+  "language": "it",
+  "qualitative": [
+    "a piacere",
+    "q.b.",
+    "quanto basta"
+  ],
+  "schema": "ricettario-parser-data-v1",
+  "version": "1.0.0",
+  "wordNumbers": {
+    "mezza": 0.5,
+    "mezzo": 0.5,
+    "un": 1,
+    "una": 1,
+    "uno": 1
+  }
+}

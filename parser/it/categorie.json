@@ -1,0 +1,104 @@
+{
+  "kind": "categorie",
+  "language": "it",
+  "rules": [
+    {
+      "name": "Dolce",
+      "tokens": [
+        "torta",
+        "biscott*",
+        "crostat*",
+        "budino",
+        "muffin",
+        "tiramisù",
+        "tiramisu",
+        "panna cotta",
+        "gelato",
+        "brownie",
+        "plumcake",
+        "ciambellone",
+        "dessert",
+        "dolce"
+      ]
+    },
+    {
+      "name": "Primo",
+      "tokens": [
+        "risotto",
+        "riso al forno",
+        "riso con",
+        "pasta",
+        "spaghetti",
+        "penne",
+        "fusilli",
+        "lasagn*",
+        "gnocch*",
+        "ravioli",
+        "tortellini",
+        "minestr*",
+        "zuppa",
+        "vellutata",
+        "pasticcio* di riso"
+      ]
+    },
+    {
+      "name": "Antipasto",
+      "tokens": [
+        "antipasto",
+        "bruschett*",
+        "crostini",
+        "tartin*",
+        "finger food"
+      ]
+    },
+    {
+      "name": "Pane e lievitati",
+      "tokens": [
+        "pane",
+        "focaccia",
+        "grissini",
+        "pizza",
+        "panino"
+      ]
+    },
+    {
+      "name": "Contorno",
+      "tokens": [
+        "contorno",
+        "insalata di",
+        "patate al forno",
+        "verdure gratinate",
+        "verdure saltate"
+      ]
+    },
+    {
+      "name": "Secondo",
+      "tokens": [
+        "pollo",
+        "tacchino",
+        "bistecca",
+        "polpette",
+        "polpettone",
+        "arrosto",
+        "filetto",
+        "pesce",
+        "salmone",
+        "tonno",
+        "frittata",
+        "hamburger"
+      ]
+    },
+    {
+      "name": "Bevanda",
+      "tokens": [
+        "frullato",
+        "smoothie",
+        "bevanda",
+        "centrifugato",
+        "cocktail"
+      ]
+    }
+  ],
+  "schema": "ricettario-parser-data-v1",
+  "version": "1.0.0"
+}

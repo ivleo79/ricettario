@@ -1,0 +1,51 @@
+{
+  "alternativeMarkers": [
+    "oppure",
+    "o in alternativa",
+    "in alternativa"
+  ],
+  "approximation": [
+    "circa"
+  ],
+  "articlePrefixes": [
+    "di",
+    "del",
+    "della",
+    "dello"
+  ],
+  "blockedIngredientWords": [
+    "metti",
+    "mettere",
+    "aggiungi",
+    "aggiungere",
+    "versa",
+    "versare",
+    "tosta",
+    "tostalo",
+    "cuocere",
+    "cuoci",
+    "mescola",
+    "mescolare",
+    "sono",
+    "utilizziamo",
+    "perfetto",
+    "indicativi",
+    "indicativo",
+    "persona",
+    "porzione",
+    "porzioni",
+    "caldaia",
+    "gradi",
+    "minuti",
+    "cottura"
+  ],
+  "kind": "lessico",
+  "language": "it",
+  "qualifiers": [
+    "a piacere",
+    "q.b.",
+    "quanto basta"
+  ],
+  "schema": "ricettario-parser-data-v1",
+  "version": "1.0.0"
+}

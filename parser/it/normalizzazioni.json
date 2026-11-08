@@ -1,0 +1,16 @@
+{
+  "exactNames": {
+    "EVO": "olio extravergine di oliva",
+    "costa di sedano": "sedano",
+    "olio EVO": "olio extravergine di oliva"
+  },
+  "kind": "normalizzazioni",
+  "language": "it",
+  "namePrefixes": {
+    "Carnaroli": "riso Carnaroli",
+    "petto": "petto di pollo"
+  },
+  "preserveSpecificity": true,
+  "schema": "ricettario-parser-data-v1",
+  "version": "1.0.0"
+}
