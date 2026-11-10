@@ -6924,6 +6924,9 @@
     "carota fresca": [
       "it:carote-crude"
     ],
+    "carota grande": [
+      "it:carote-crude"
+    ],
     "carota grattugiata": [
       "it:carote-crude"
     ],
@@ -6951,6 +6954,9 @@
     "carote fresche crude": [
       "it:carote-crude"
     ],
+    "carote grandi": [
+      "it:carote-crude"
+    ],
     "carote grattugiate": [
       "it:carote-crude"
     ],
@@ -6959,6 +6965,12 @@
     ],
     "carote lesse": [
       "it:carote-bollite"
+    ],
+    "carote medie": [
+      "it:carote-crude"
+    ],
+    "carote piccole": [
+      "it:carote-crude"
     ],
     "cavolfiore": [
       "it:cavolfiore-crudo"
@@ -7202,6 +7214,12 @@
     "cipolla cruda": [
       "it:cipolle-crude"
     ],
+    "cipolla dorata": [
+      "it:cipolle-crude"
+    ],
+    "cipolla gialla": [
+      "it:cipolle-crude"
+    ],
     "cipolla rossa": [
       "it:cipolla-rossa-cruda"
     ],
@@ -7235,6 +7253,9 @@
     "cornetti": [
       "it:fagiolini-freschi-crudi"
     ],
+    "cornetti lessati": [
+      "it:fagiolini-bolliti"
+    ],
     "cosce di pollo disossate": [
       "it:cosce-di-pollo-senza-pelle-crude"
     ],
@@ -7250,6 +7271,12 @@
     "coscia pollo senza pelle cruda": [
       "it:cosce-di-pollo-senza-pelle-crude"
     ],
+    "costa di sedano": [
+      "it:sedano-crudo"
+    ],
+    "coste di sedano": [
+      "it:sedano-crudo"
+    ],
     "cous cous": [
       "it:cous-cous-secco"
     ],
@@ -7259,17 +7286,48 @@
     "cream cheese": [
       "it:formaggio-fresco-spalmabile-intero"
     ],
+    "cream cheese low fat": [
+      "it:formaggio-fresco-spalmabile-light"
+    ],
     "crema di arachidi": [
       "it:burro-di-arachidi"
     ],
     "crema di sesamo": [
       "it:tahina"
     ],
+    "cubetto dado vegetale": [
+      "it:dado-vegetale-star-concentrato"
+    ],
     "cus cus": [
       "it:cous-cous-secco"
     ],
     "cuscus": [
       "it:cous-cous-secco"
+    ],
+    "dado per brodo vegetale": [
+      "it:dado-vegetale-star-concentrato"
+    ],
+    "dado vegetale": [
+      "it:dado-vegetale-star-concentrato",
+      "it:dado-vegetale-star-meno30-sale"
+    ],
+    "dado vegetale 30 sale": [
+      "it:dado-vegetale-star-meno30-sale"
+    ],
+    "dado vegetale con meno sale": [
+      "it:dado-vegetale-star-meno30-sale"
+    ],
+    "dado vegetale concentrato star 30 sale": [
+      "it:dado-vegetale-star-meno30-sale"
+    ],
+    "dado vegetale concentrato star il mio dado vegetale": [
+      "it:dado-vegetale-star-concentrato"
+    ],
+    "dado vegetale ridotto sale": [
+      "it:dado-vegetale-star-meno30-sale"
+    ],
+    "dado vegetale star": [
+      "it:dado-vegetale-star-concentrato"
     ],
     "datteri": [
       "it:datteri-secchi"
@@ -7360,17 +7418,35 @@
     "fagioli rossi in scatola": [
       "it:fagioli-rossi-in-scatola"
     ],
+    "fagiolini bolliti": [
+      "it:fagiolini-bolliti"
+    ],
+    "fagiolini cotti in acqua": [
+      "it:fagiolini-bolliti"
+    ],
     "fagiolini crudi": [
       "it:fagiolini-freschi-crudi"
     ],
     "fagiolini freschi crudi": [
       "it:fagiolini-freschi-crudi"
     ],
+    "fagiolini gia lessati": [
+      "it:fagiolini-bolliti"
+    ],
     "fagiolini gia pronti": [
       "it:fagiolini-in-scatola-sgocciolati"
     ],
     "fagiolini in scatola sgocciolati": [
       "it:fagiolini-in-scatola-sgocciolati"
+    ],
+    "fagiolini lessati": [
+      "it:fagiolini-bolliti"
+    ],
+    "fagiolini lessati scolati": [
+      "it:fagiolini-bolliti"
+    ],
+    "fagiolini lessati senza sale": [
+      "it:fagiolini-bolliti"
     ],
     "fagiolini precotti in scatola": [
       "it:fagiolini-in-scatola-sgocciolati"
@@ -7496,6 +7572,12 @@
     "fave verdi": [
       "it:fave-fresche"
     ],
+    "fesa di tacchino cruda": [
+      "it:petto-tacchino-crudo"
+    ],
+    "fesa di tacchino fresca": [
+      "it:petto-tacchino-crudo"
+    ],
     "feta": [
       "it:feta"
     ],
@@ -7507,6 +7589,9 @@
     ],
     "fico": [
       "it:fichi-freschi"
+    ],
+    "filetti di sgombro fresco": [
+      "it:sgombro-atlantico-crudo"
     ],
     "filetto di maiale crudo": [
       "it:filetto-di-maiale-crudo"
@@ -7522,6 +7607,24 @@
     ],
     "filetto di suino": [
       "it:filetto-di-maiale-crudo"
+    ],
+    "finocchi": [
+      "it:finocchio-crudo"
+    ],
+    "finocchi crudi": [
+      "it:finocchio-crudo"
+    ],
+    "finocchio": [
+      "it:finocchio-crudo"
+    ],
+    "finocchio a fette": [
+      "it:finocchio-crudo"
+    ],
+    "finocchio crudo bulbo": [
+      "it:finocchio-crudo"
+    ],
+    "finocchio fresco": [
+      "it:finocchio-crudo"
     ],
     "fiocchi d avena": [
       "it:fiocchi-d-avena"
@@ -7541,11 +7644,20 @@
     "fondente senza zuccheri": [
       "it:cioccolato-fondente-senza-zuccheri-aggiunti"
     ],
+    "formaggio cremoso a ridotto contenuto di grassi": [
+      "it:formaggio-fresco-spalmabile-light"
+    ],
     "formaggio feta": [
       "it:feta"
     ],
+    "formaggio fresco spalmabile a ridotto contenuto di grassi generico usda": [
+      "it:formaggio-fresco-spalmabile-light"
+    ],
     "formaggio fresco spalmabile intero": [
       "it:formaggio-fresco-spalmabile-intero"
+    ],
+    "formaggio fresco spalmabile light": [
+      "it:formaggio-fresco-spalmabile-light"
     ],
     "formaggio provolone": [
       "it:provolone"
@@ -7555,6 +7667,9 @@
     ],
     "formaggio spalmabile": [
       "it:formaggio-fresco-spalmabile-intero"
+    ],
+    "formaggio spalmabile light": [
+      "it:formaggio-fresco-spalmabile-light"
     ],
     "formaggio tipo parmigiano duro": [
       "it:formaggio-tipo-parmigiano-duro"
@@ -7590,6 +7705,9 @@
       "it:gamberi-crudi"
     ],
     "gambi di sedano": [
+      "it:sedano-crudo"
+    ],
+    "gambo di sedano": [
       "it:sedano-crudo"
     ],
     "gherigli di noce": [
@@ -8585,8 +8703,17 @@
     "petto di pollo crudo senza pelle": [
       "it:petto-di-pollo-crudo-senza-pelle"
     ],
+    "petto di tacchino": [
+      "it:petto-tacchino-crudo"
+    ],
+    "petto di tacchino crudo senza pelle": [
+      "it:petto-tacchino-crudo"
+    ],
     "petto pollo crudo": [
       "it:petto-di-pollo-crudo-senza-pelle"
+    ],
+    "petto tacchino crudo": [
+      "it:petto-tacchino-crudo"
     ],
     "pezzetti di cioccolato": [
       "it:cioccolato-fondente-45-59",
@@ -8707,6 +8834,24 @@
     ],
     "pomodoro in pezzi in scatola": [
       "it:pomodoro-in-pezzi-in-scatola"
+    ],
+    "porri": [
+      "it:porro-crudo"
+    ],
+    "porri crudi": [
+      "it:porro-crudo"
+    ],
+    "porro": [
+      "it:porro-crudo"
+    ],
+    "porro affettato": [
+      "it:porro-crudo"
+    ],
+    "porro crudo": [
+      "it:porro-crudo"
+    ],
+    "porro fresco": [
+      "it:porro-crudo"
     ],
     "preparato spadoni farina tipo 1 e amido resistente": [
       "it:farina-spadoni-proteica"
@@ -8989,6 +9134,9 @@
     "sedano": [
       "it:sedano-crudo"
     ],
+    "sedano a coste": [
+      "it:sedano-crudo"
+    ],
     "sedano crudo": [
       "it:sedano-crudo"
     ],
@@ -9036,6 +9184,18 @@
     ],
     "sesamo": [
       "it:semi-di-sesamo"
+    ],
+    "sgombro atlantico": [
+      "it:sgombro-atlantico-crudo"
+    ],
+    "sgombro atlantico crudo": [
+      "it:sgombro-atlantico-crudo"
+    ],
+    "sgombro crudo": [
+      "it:sgombro-atlantico-crudo"
+    ],
+    "sgombro fresco": [
+      "it:sgombro-atlantico-crudo"
     ],
     "shoyu": [
       "it:salsa-di-soia-classica"
@@ -9086,8 +9246,14 @@
     "spinacini freschi": [
       "it:spinaci-crudi"
     ],
+    "star dado vegetale 30 sale": [
+      "it:dado-vegetale-star-meno30-sale"
+    ],
     "star gran brodo alle verdure": [
       "it:brodo-vegetale-star-gran-brodo"
+    ],
+    "star il mio dado vegetale": [
+      "it:dado-vegetale-star-concentrato"
     ],
     "straccetti di petto di pollo": [
       "it:petto-di-pollo-crudo-senza-pelle"
@@ -9107,6 +9273,9 @@
     "svizzera di scottona": [
       "it:hamburger-scottona-conad-sapori-idee",
       "it:hamburger-scottona-coop-fior-fiore"
+    ],
+    "tacchino petto fresco": [
+      "it:petto-tacchino-crudo"
     ],
     "tagliatelle": [
       "it:pasta-all-uovo-secca"
@@ -9321,175 +9490,6 @@
     ],
     "zucchini": [
       "it:zucchine-crude"
-    ],
-    "costa di sedano": [
-      "it:sedano-crudo"
-    ],
-    "coste di sedano": [
-      "it:sedano-crudo"
-    ],
-    "gambo di sedano": [
-      "it:sedano-crudo"
-    ],
-    "sedano a coste": [
-      "it:sedano-crudo"
-    ],
-    "carote grandi": [
-      "it:carote-crude"
-    ],
-    "carota grande": [
-      "it:carote-crude"
-    ],
-    "carote medie": [
-      "it:carote-crude"
-    ],
-    "carote piccole": [
-      "it:carote-crude"
-    ],
-    "cipolla dorata": [
-      "it:cipolle-crude"
-    ],
-    "cipolla gialla": [
-      "it:cipolle-crude"
-    ],
-    "fagiolini lessati senza sale": [
-      "it:fagiolini-bolliti"
-    ],
-    "fagiolini gia lessati": [
-      "it:fagiolini-bolliti"
-    ],
-    "fagiolini lessati": [
-      "it:fagiolini-bolliti"
-    ],
-    "fagiolini bolliti": [
-      "it:fagiolini-bolliti"
-    ],
-    "fagiolini cotti in acqua": [
-      "it:fagiolini-bolliti"
-    ],
-    "fagiolini lessati scolati": [
-      "it:fagiolini-bolliti"
-    ],
-    "cornetti lessati": [
-      "it:fagiolini-bolliti"
-    ],
-    "formaggio fresco spalmabile a ridotto contenuto di grassi (generico usda)": [
-      "it:formaggio-fresco-spalmabile-light"
-    ],
-    "formaggio spalmabile light": [
-      "it:formaggio-fresco-spalmabile-light"
-    ],
-    "formaggio fresco spalmabile light": [
-      "it:formaggio-fresco-spalmabile-light"
-    ],
-    "cream cheese low fat": [
-      "it:formaggio-fresco-spalmabile-light"
-    ],
-    "formaggio cremoso a ridotto contenuto di grassi": [
-      "it:formaggio-fresco-spalmabile-light"
-    ],
-    "dado vegetale concentrato — star il mio dado vegetale": [
-      "it:dado-vegetale-star-concentrato"
-    ],
-    "dado vegetale": [
-      "it:dado-vegetale-star-concentrato",
-      "it:dado-vegetale-star-meno30-sale"
-    ],
-    "dado per brodo vegetale": [
-      "it:dado-vegetale-star-concentrato"
-    ],
-    "dado vegetale star": [
-      "it:dado-vegetale-star-concentrato"
-    ],
-    "star il mio dado vegetale": [
-      "it:dado-vegetale-star-concentrato"
-    ],
-    "cubetto dado vegetale": [
-      "it:dado-vegetale-star-concentrato"
-    ],
-    "dado vegetale concentrato — star -30% sale": [
-      "it:dado-vegetale-star-meno30-sale"
-    ],
-    "dado vegetale -30% sale": [
-      "it:dado-vegetale-star-meno30-sale"
-    ],
-    "dado vegetale con meno sale": [
-      "it:dado-vegetale-star-meno30-sale"
-    ],
-    "dado vegetale ridotto sale": [
-      "it:dado-vegetale-star-meno30-sale"
-    ],
-    "star dado vegetale -30 sale": [
-      "it:dado-vegetale-star-meno30-sale"
-    ],
-    "finocchio crudo (bulbo)": [
-      "it:finocchio-crudo"
-    ],
-    "finocchio": [
-      "it:finocchio-crudo"
-    ],
-    "finocchi": [
-      "it:finocchio-crudo"
-    ],
-    "finocchio fresco": [
-      "it:finocchio-crudo"
-    ],
-    "finocchi crudi": [
-      "it:finocchio-crudo"
-    ],
-    "finocchio a fette": [
-      "it:finocchio-crudo"
-    ],
-    "porro crudo": [
-      "it:porro-crudo"
-    ],
-    "porro": [
-      "it:porro-crudo"
-    ],
-    "porri": [
-      "it:porro-crudo"
-    ],
-    "porri crudi": [
-      "it:porro-crudo"
-    ],
-    "porro fresco": [
-      "it:porro-crudo"
-    ],
-    "porro affettato": [
-      "it:porro-crudo"
-    ],
-    "petto di tacchino crudo senza pelle": [
-      "it:petto-tacchino-crudo"
-    ],
-    "petto di tacchino": [
-      "it:petto-tacchino-crudo"
-    ],
-    "petto tacchino crudo": [
-      "it:petto-tacchino-crudo"
-    ],
-    "fesa di tacchino fresca": [
-      "it:petto-tacchino-crudo"
-    ],
-    "fesa di tacchino cruda": [
-      "it:petto-tacchino-crudo"
-    ],
-    "tacchino petto fresco": [
-      "it:petto-tacchino-crudo"
-    ],
-    "sgombro atlantico crudo": [
-      "it:sgombro-atlantico-crudo"
-    ],
-    "sgombro fresco": [
-      "it:sgombro-atlantico-crudo"
-    ],
-    "sgombro crudo": [
-      "it:sgombro-atlantico-crudo"
-    ],
-    "sgombro atlantico": [
-      "it:sgombro-atlantico-crudo"
-    ],
-    "filetti di sgombro fresco": [
-      "it:sgombro-atlantico-crudo"
     ]
   },
   "famiglieAmbigue": {
