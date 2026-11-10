@@ -1,9 +1,9 @@
 {
   "schema": "ricettario-catalogo-update-v1",
   "clientProtocol": 1,
-  "version": "1.2.3",
-  "file": "catalogo_alimentare_it_v1_2_3.json",
-  "sha256": "8aa604c4b917099c7b68f8105b00b976a7dc089128b244291b36538250e3605a",
-  "descrizione": "Audit richieste: +savoiardi Vicenzovo, +brodo vegetale liquido pronto, sinonimi Spadoni e Maizena. Include le due schede scottona della v1.2.2 (210 → 212).",
-  "published": "2026-10-31"
+  "version": "1.2.4",
+  "file": "catalogo_alimentare_it_v1_2_4.json",
+  "sha256": "610e20137d0ac2cabbd2bcede566e16b5d7e6a45f209b0df4186b36d54ef6bee",
+  "descrizione": "Catalogo v1.2.4, 220 alimenti: 212 esistenti conservati e 8 schede aggiunte; nuovi sinonimi; dadi Star concentrati da confermare.",
+  "published": "2026-11-10"
 }
