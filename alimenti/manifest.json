@@ -1,9 +1,9 @@
 {
   "schema": "ricettario-catalogo-update-v1",
   "clientProtocol": 1,
-  "version": "1.2.5",
-  "file": "catalogo_alimentare_it_v1_2_5.json",
-  "sha256": "3a9bb179a05c3049bca52cda0671898e18a4fcb9e8b68131443b8c6230996c7a",
-  "descrizione": "Espansione catalogo nutrizionale v1.2.5: 351 alimenti (131 nuove schede) e sinonimi italiani/internazionali, compatibile con v1.2.4.",
-  "published": "2026-11-11"
+  "version": "1.2.6",
+  "file": "catalogo_alimentare_it_v1_2_6.json",
+  "sha256": "3d1f45390a9875f4b574ea2ae68d1e968b7cc703ee2d9dfef28f8efdef2b5d5f",
+  "descrizione": "Catalogo nutrizionale v1.2.6: 10 nuove schede documentate, sinonimi e tre famiglie ambigue; compatibile con v1.2.5.",
+  "published": "2026-11-20"
 }
