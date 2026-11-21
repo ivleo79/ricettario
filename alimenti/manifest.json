@@ -1,9 +1,9 @@
 {
   "schema": "ricettario-catalogo-update-v1",
   "clientProtocol": 1,
-  "version": "1.2.6",
-  "file": "catalogo_alimentare_it_v1_2_6.json",
-  "sha256": "3d1f45390a9875f4b574ea2ae68d1e968b7cc703ee2d9dfef28f8efdef2b5d5f",
-  "descrizione": "Catalogo nutrizionale v1.2.6: 10 nuove schede documentate, sinonimi e tre famiglie ambigue; compatibile con v1.2.5.",
-  "published": "2026-11-20"
+  "version": "1.2.7",
+  "file": "catalogo_alimentare_it_v1_2_7.json",
+  "sha256": "2726fa53622a6dfef261d2c3eca2e9ec67c2580116560d7b4541fc06b009e51f",
+  "descrizione": "Catalogo nutrizionale 1.2.7: 50 nuove schede documentate e sinonimi per le ricette online; compatibile con la 1.2.6.",
+  "published": "2026-11-22"
 }
