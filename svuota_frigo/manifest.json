@@ -1,11 +1,12 @@
+
 {
   "schema": "ricettario-svuota-frigo-update-v1",
   "clientProtocol": 1,
-  "version": "0.1.0-draft",
-  "file": "catalogo_ricette_v0_1_0_BOZZA.json",
-  "sha256": "d0624e6411ee40a8fffb087548a6ea41ba7e180d0ca5f4acdf997510cee3fe56",
+  "version": "0.2.0-draft",
+  "file": "catalogo_ricette_v0_2_0_BOZZA.json",
+  "sha256": "62e01df5a1112f66a02605c3ea72f847cc761f5eca939611e033b254d8040474",
   "recipeCount": 250,
-  "status": "bozza_sperimentale_non_revisionata",
-  "descrizione": "250 ricette originali in bozza per consultazione e test. Nessun contenuto viene cercato o scaricato da siti terzi. Revisione editoriale, diritti e dati nutrizionali da completare.",
-  "published": "2026-11-20"
+  "status": "bozza_sperimentale_revisionata",
+  "descrizione": "250 ricette revisionate per il collaudo sperimentale della RC 54.42. Catalogo non stabile.",
+  "published": "2026-11-22"
 }
