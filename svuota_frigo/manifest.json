@@ -1,12 +1,11 @@
-
 {
   "schema": "ricettario-svuota-frigo-update-v1",
   "clientProtocol": 1,
-  "version": "0.2.0-draft",
-  "file": "catalogo_ricette_v0_2_0_BOZZA.json",
-  "sha256": "62e01df5a1112f66a02605c3ea72f847cc761f5eca939611e033b254d8040474",
+  "version": "0.2.1-draft",
+  "file": "catalogo_ricette_v0_2_1_BOZZA.json",
+  "sha256": "cf3cabc4fb9a777b290f67727681ad5a6b2281f29de99b80923953fbdd316ca0",
   "recipeCount": 250,
   "status": "bozza_sperimentale_revisionata",
-  "descrizione": "250 ricette revisionate per il collaudo sperimentale della RC 54.42. Catalogo non stabile.",
-  "published": "2026-11-22"
+  "descrizione": "Etichette brevi di sola visualizzazione; 250 ricette, foodId, foodRef, nutrizione e nomi originali invariati. Per vederle nell’app serve l’adattatore previsto dalla successiva RC.",
+  "published": "2026-11-26"
 }
